@@ -14,12 +14,15 @@
     "@types/react-dom": "^18.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "mapbox-gl": "^2.10.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
     "react-leaflet": "^4.1.0",
+    "react-map-gl": "^7.0.19",
     "react-redux": "^8.0.5",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "react-select": "^5.6.0",
@@ -61,5 +64,9 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
+  },
+  "devDependencies": {
+    "@types/mapbox-gl": "^2.7.7",
+    "@types/react-map-gl": "^6.1.3"
   }
 }

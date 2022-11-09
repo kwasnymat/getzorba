@@ -6,6 +6,7 @@ import { AppDispatch, RootState } from "../../shared/store/store";
 import { Page } from "../../shared/components/Page";
 import { Filters, Cards } from "../../modules/Homes";
 import { MapContainer, ListContainer } from "./styles";
+import { MapComponent } from "../../modules/Map";
 
 export const Homes = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,7 +18,9 @@ export const Homes = () => {
 
   return (
     <Page>
-      <MapContainer></MapContainer>
+      <MapContainer>
+        <MapComponent />
+      </MapContainer>
       <ListContainer>
         <Filters />
         <Cards />

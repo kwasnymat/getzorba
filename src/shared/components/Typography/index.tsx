@@ -90,5 +90,12 @@ export const Link = styled("a", {
         fontSize: "$font12",
       },
     },
+    hideOnMobiles: {
+      true: {
+        "@media (max-width: 568px)": {
+          display: "none",
+        },
+      },
+    },
   },
 });
