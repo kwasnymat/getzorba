@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AgeFilter, PropertiesInitialState, Property, Status } from "./types";
+import { sortByStatusHelper } from "../utils/sortByStatus";
+import { sortByPropertyAgeHelper } from "../utils/sortByPropertyAge";
 
 export const fetchProperties = createAsyncThunk(
   "fetchProperties",
@@ -39,28 +41,14 @@ const propertiesSlice = createSlice({
       state.filters.ageFilter = action.payload;
     },
     sortByStatus: (state, action: PayloadAction<Status>) => {
-      state.properties.sort((a, b) => {
-        if (a.status === action.payload && b.status !== action.payload) {
-          return -1;
-        }
-        if (a.status !== action.payload && b.status === action.payload) {
-          return 1;
-        }
-        return 0;
-      });
+      const sorted = sortByStatusHelper(state.properties, action);
+      state.properties = sorted;
     },
     sortByPropertyAge: (state, action: PayloadAction<AgeFilter>) => {
-      state.properties.sort((a, b) => {
-        if (action.payload === "newest") {
-          return (
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          );
-        }
-        return (
-          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-        );
-      });
+      const sorted = sortByPropertyAgeHelper(state.properties, action);
+      state.properties = sorted;
     },
+
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProperties.pending, (state) => {
