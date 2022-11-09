@@ -2,12 +2,13 @@ import React, { Fragment, useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { CiDollar } from "react-icons/ci";
 import { FaTimes } from "react-icons/fa";
+import { Carousel } from 'react-responsive-carousel';
 
 import { RootState } from "../../../shared/store/store";
 import { Header3, Link, Text } from "../../../shared/components/Typography";
 import {
   CardContainer,
-  CardsContainer,
+  CardsContainer, CarouselContainer,
   CloseButton,
   Image,
   Price,
@@ -18,6 +19,8 @@ import {
   StyledSup,
   UnitsContainer,
 } from "./styles";
+
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const Cards = () => {
   const { properties } = useSelector((state: RootState) => state.properties);
@@ -33,7 +36,6 @@ export const Cards = () => {
           ({ _id, purchasePrice, units, address, images }, index) => {
             const { bathroom, bedroom, squareFootage } = units[0];
             const { formattedAddress, locality, stateCode } = address;
-            const imageUrl = images[0];
             return (
               <Fragment key={_id}>
                 {index === 2 && isPromoMenuOpened && (
@@ -57,7 +59,11 @@ export const Cards = () => {
                   </PromoContainer>
                 )}
                 <CardContainer>
-                  <Image src={imageUrl} alt="Property image" />
+                  <CarouselContainer>
+                    <Carousel showThumbs={false}>
+                      {images.slice(0,10).map((url) => <Image key={url} src={url} />)}
+                    </Carousel>
+                  </CarouselContainer>
                   <PriceContainer>
                     <Price>${purchasePrice.toLocaleString()}</Price>
                     <UnitsContainer>
