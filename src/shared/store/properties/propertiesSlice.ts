@@ -48,7 +48,6 @@ const propertiesSlice = createSlice({
       const sorted = sortByPropertyAgeHelper(state.properties, action);
       state.properties = sorted;
     },
-
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProperties.pending, (state) => {

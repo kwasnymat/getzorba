@@ -10,10 +10,8 @@ import { MapComponent } from "../../modules/Map";
 
 export const Homes = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { inputValue, properties } = useSelector(
-    (state: RootState) => state.properties
-  );
-  console.log(properties);
+  const { inputValue } = useSelector((state: RootState) => state.properties);
+
   useEffect(() => {
     dispatch(fetchProperties(inputValue));
   }, [dispatch, inputValue]);
