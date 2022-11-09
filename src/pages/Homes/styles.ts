@@ -28,3 +28,10 @@ export const ListContainer = styled("div", {
     width: "68rem",
   },
 });
+
+export const LoaderContainer = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100%",
+});
