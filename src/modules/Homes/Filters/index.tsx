@@ -66,6 +66,7 @@ export const Filters = () => {
       </PropertiesCounterContainer>
       <ButtonsContainer>
         <Select
+          isSearchable={false}
           onChange={handleSelectChange}
           options={filterOptions}
           defaultValue={filterOptions.find(
