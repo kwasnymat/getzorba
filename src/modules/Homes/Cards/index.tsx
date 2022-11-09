@@ -2,13 +2,14 @@ import React, { Fragment, useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { CiDollar } from "react-icons/ci";
 import { FaTimes } from "react-icons/fa";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel";
 
 import { RootState } from "../../../shared/store/store";
 import { Header3, Link, Text } from "../../../shared/components/Typography";
 import {
   CardContainer,
-  CardsContainer, CarouselContainer,
+  CardsContainer,
+  CarouselContainer,
   CloseButton,
   Image,
   Price,
@@ -61,7 +62,9 @@ export const Cards = () => {
                 <CardContainer>
                   <CarouselContainer>
                     <Carousel showThumbs={false}>
-                      {images.slice(0,10).map((url) => <Image key={url} src={url} />)}
+                      {images.slice(0, 10).map((url) => (
+                        <Image key={url} src={url} />
+                      ))}
                     </Carousel>
                   </CarouselContainer>
                   <PriceContainer>

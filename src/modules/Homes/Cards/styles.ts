@@ -92,7 +92,7 @@ export const CloseButton = styled("button", {
   cursor: "pointer",
 });
 
-export const CarouselContainer = styled('div', {
+export const CarouselContainer = styled("div", {
   width: "100%",
 
   "@bp-xl": {
