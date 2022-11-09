@@ -40,9 +40,13 @@ export const RightSectionWrapper = styled("div", {
 });
 
 export const MiddleSectionWrapper = styled("div", {
-  display: "flex",
+  display: "none",
   columnGap: "$extraLarge",
   alignItems: "center",
+
+  "@bp-md": {
+    display: "flex",
+  },
 });
 
 export const ArrowIndicator = styled("span", {
