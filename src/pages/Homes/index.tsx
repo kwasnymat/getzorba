@@ -5,12 +5,15 @@ import { fetchProperties } from "../../shared/store/properties/propertiesSlice";
 import { AppDispatch, RootState } from "../../shared/store/store";
 import { Page } from "../../shared/components/Page";
 import { Filters, Cards } from "../../modules/Homes";
-import { MapContainer, ListContainer } from "./styles";
+import { MapContainer, ListContainer, LoaderContainer } from "./styles";
 import { MapComponent } from "../../modules/Map";
+import { Loader } from "../../shared/components/Loader";
 
 export const Homes = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { inputValue } = useSelector((state: RootState) => state.properties);
+  const { inputValue, isFetchingProperties } = useSelector(
+    (state: RootState) => state.properties
+  );
 
   useEffect(() => {
     dispatch(fetchProperties(inputValue));
@@ -22,8 +25,16 @@ export const Homes = () => {
         <MapComponent />
       </MapContainer>
       <ListContainer>
-        <Filters />
-        <Cards />
+        {isFetchingProperties ? (
+          <LoaderContainer>
+            <Loader visible={isFetchingProperties} />
+          </LoaderContainer>
+        ) : (
+          <>
+            <Filters />
+            <Cards />
+          </>
+        )}
       </ListContainer>
     </Page>
   );
