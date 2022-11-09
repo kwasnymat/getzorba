@@ -12,7 +12,7 @@ export const MiddleSection = () => {
         color="tertiary"
         icon={<FiSearch size={20} />}
       />
-      <Link href={"/"} color="tertiary">
+      <Link href={"/"} color="tertiary" hideOnMobiles>
         Recommended listings
       </Link>
     </MiddleSectionWrapper>
